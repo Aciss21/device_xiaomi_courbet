@@ -1,0 +1,58 @@
+#
+# Copyright (C) 2021-2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Inherit from sm6150-common
+include device/xiaomi/sm6150-common/BoardConfigCommon.mk
+
+DEVICE_PATH := device/xiaomi/courbet
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := courbet,courbetin
+
+# Audio
+TARGET_PROVIDES_AUDIO_EXTNS := true
+
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
+DEVICE_MANIFEST_SKUS += courbet
+DEVICE_MANIFEST_COURBET_FILES := \
+    $(DEVICE_MANIFEST_FILE) \
+    $(DEVICE_PATH)/configs/hidl/manifest-nfc.xml
+
+# Kernel
+TARGET_KERNEL_CONFIG := vendor/sdmsteppe-perf_defconfig vendor/courbet.config
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
+BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
+BOARD_DTBOIMG_PARTITION_SIZE := 33554432
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
+BOARD_SUPER_PARTITION_SIZE := 9126805504
+
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # (BOARD_SUPER_PARTITION_SIZE - 4194304) 4MiB overhead
+
+# Properties
+TARGET_ODM_PROP += $(DEVICE_PATH)/properties/odm.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
+
+# Screen density
+TARGET_SCREEN_DENSITY := 440
+
+# Soong
+SOONG_CONFIG_xiaomiSm6150Vars_livedisplay_support_anti_flicker ?= true
+
+# Vendor security patch level
+VENDOR_SECURITY_PATCH := 2026-08-01
+
+# Inherit from proprietary files
+include vendor/xiaomi/courbet/BoardConfigVendor.mk
+
+# MIUICamera
+-include vendor/miuicamera-courbet/BoardConfig.mk
+
+# Broken rules
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
