@@ -22,7 +22,7 @@ DEVICE_MANIFEST_COURBET_FILES := \
     $(DEVICE_PATH)/configs/hidl/manifest-nfc.xml
 
 # Kernel
-TARGET_KERNEL_CONFIG := vendor/sdmsteppe-perf_defconfig vendor/courbet.config
+TARGET_KERNEL_CONFIG := vendor/courbet_defconfig vendor/courbet.config
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
