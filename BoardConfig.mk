@@ -44,7 +44,7 @@ TARGET_SCREEN_DENSITY := 440
 SOONG_CONFIG_xiaomiSm6150Vars_livedisplay_support_anti_flicker ?= true
 
 # Vendor security patch level
-VENDOR_SECURITY_PATCH := 2026-08-01
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Inherit from proprietary files
 include vendor/xiaomi/courbet/BoardConfigVendor.mk
