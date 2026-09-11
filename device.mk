@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2026 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -57,6 +57,9 @@ PRODUCT_COPY_FILES += \
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.lineage
+    
+# BCR
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
