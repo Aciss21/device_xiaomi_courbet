@@ -91,6 +91,7 @@ PRODUCT_COPY_FILES += \
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/rro_overlays \
     $(LOCAL_PATH)/overlay-custom
 
 # Power
