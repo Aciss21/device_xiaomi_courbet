@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="qs_header_height">51dp</dimen>         <!--aligns qqs_header icons with the center of cuthole-->
+    <dimen name="qs_header_row_min_height">51dp</dimen> <!--aligns qqs_header icons with the center of cuthole-->
+
+    <!-- the padding on the start of the statusbar -->
+    <dimen name="status_bar_padding_start">0dp</dimen>
+
+    <!-- the padding on the end of the statusbar -->
+    <dimen name="status_bar_padding_end">0dp</dimen>
+
+    <!-- The starting padding for the clock in the status bar. -->
+    <dimen name="status_bar_clock_starting_padding">0dp</dimen>
+
+    <!-- The end padding for the clock in the status bar. -->
+    <dimen name="status_bar_clock_end_padding">0dp</dimen>
+
+    <!-- End padding for left-aligned status bar clock -->
+    <dimen name="status_bar_left_clock_end_padding">0sp</dimen>
+
+    <!-- paddings for container with status icons and battery -->
+    <!-- padding start is a bit smaller than end to account for status icon margin-->
+    <dimen name="status_bar_icons_padding_start">0dp</dimen>
+    <dimen name="status_bar_icons_padding_end">0dp</dimen>
+
+    <!-- the padding on the top of the statusbar (usually 0) -->
+    <dimen name="status_bar_padding_top">32.0px</dimen> <!--aligns icons with the center of cuthole-->
+
+    <dimen name="rounded_corner_content_padding">32.0px</dimen>
+
+</resources>
