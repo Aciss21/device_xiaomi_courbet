@@ -17,8 +17,6 @@ ro.vendor.display.ad.sdr_calib_data=/vendor/etc/sdr_config.cfg
 ro.vendor.display.ad=1
 ro.vendor.display.sensortype=2
 ro.vendor.display.type=oled
-persist.sys.sf.native_mode=0
-persist.sys.sf.color_mode=0
 
 # Fingerprint
 persist.vendor.fingerprint.type=side
