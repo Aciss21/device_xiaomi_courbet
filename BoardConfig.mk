@@ -16,10 +16,6 @@ TARGET_OTA_ASSERT_DEVICE := courbet,courbetin
 TARGET_PROVIDES_AUDIO_EXTNS := true
 
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/manifest.xml
-DEVICE_MANIFEST_SKUS += courbet
-DEVICE_MANIFEST_COURBET_FILES := \
-    $(DEVICE_MANIFEST_FILE) \
-    $(DEVICE_PATH)/configs/hidl/manifest-nfc.xml
 
 # Kernel
 TARGET_KERNEL_CONFIG := vendor/courbet_defconfig vendor/courbet.config
