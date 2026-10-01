@@ -53,9 +53,9 @@ PRODUCT_COPY_FILES += \
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.lineage
-    
+
 # BCR
-$(call inherit-product-if-exists, vendor/bcr/bcr.mk
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
@@ -89,7 +89,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/rro_overlays 
+    $(LOCAL_PATH)/rro_overlays
 
 # Power
 PRODUCT_COPY_FILES += \
