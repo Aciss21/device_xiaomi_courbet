@@ -42,18 +42,19 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.lineage
 
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
+
 # BCR
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
 
 # Media
 PRODUCT_PACKAGES += \
     libcodec2_soft_common.vendor \
     libcodec2_vndk.vendor \
     libsfplugin_ccodec_utils.vendor \
-    libstagefright_foundation-v33 \
+    libstagefright_foundation-v33
 
 # NFC
 PRODUCT_PACKAGES += \
