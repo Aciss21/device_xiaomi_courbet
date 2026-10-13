@@ -45,6 +45,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DolbyAtmos
 
+# LunarisDolby
+PRODUCT_SOONG_NAMESPACES += \
+    packages/apps/LunarisDolby
+
+PRODUCT_PACKAGES += \
+    LunarisDolby
+
 # Inherit release-keys
 -include vendor/lineage-priv/keys/keys.mk
 
