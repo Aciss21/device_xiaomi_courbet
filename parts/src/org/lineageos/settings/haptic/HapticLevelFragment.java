@@ -30,31 +30,12 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import org.lineageos.settings.R;
-import org.lineageos.settings.preferences.CustomSeekBarPreference;
 import org.lineageos.settings.utils.FileUtils;
 
 public class HapticLevelFragment extends SettingsBasePreferenceFragment
         implements OnPreferenceChangeListener {
 
     private Vibrator mVibrator;
-
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.haptic_settings, rootKey);
-
-        final CustomSeekBarPreference mHapticLevel = (CustomSeekBarPreference) findPreference(HapticUtils.PREF_LEVEL);
-        if (FileUtils.fileExists(HapticUtils.PATH_LEVEL)) {
-            mVibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            if (mVibrator == null || !mVibrator.hasVibrator()) {
-                mVibrator = null;
-            }
-            mHapticLevel.setEnabled(true);
-            mHapticLevel.setOnPreferenceChangeListener(this);
-        } else {
-            mHapticLevel.setSummary(R.string.haptic_level_summary_incompatible);
-            mHapticLevel.setEnabled(false);
-        }
-    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {

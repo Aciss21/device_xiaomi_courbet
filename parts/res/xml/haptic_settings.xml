@@ -18,15 +18,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <org.lineageos.settings.preferences.CustomSeekBarPreference
-        android:key="haptic_level_pref"
-        android:title="@string/haptic_level_title"
-        android:summary="@string/haptic_level_summary"
-        android:defaultValue="80"
-        android:max="100"
-        android:min="0"
-        app:units="%" />
-
     <com.android.settingslib.widget.FooterPreference
         android:key="haptic_footer_preference"
         android:title="@string/haptic_warning"
