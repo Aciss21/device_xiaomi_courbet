@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sysfs="http://schemas.android.com/apk/res-auto"
+    android:title="@string/nerv_stuff_title">
+
+    <PreferenceCategory android:title="Display">
+        <Preference
+            android:key="resolution"
+            android:title="@string/upscale_title"
+            android:summary="@string/upscale_summary" />
+        <Preference
+            android:key="system_resolution"
+            android:title="@string/system_resolution_title"
+            android:summary="@string/system_resolution_summary_setting" />
+            
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Doze">
+    <SwitchPreferenceCompat
+        android:key="always_on_display"
+        android:disableDependentsState="true"
+        android:icon="@drawable/ic_doze_aod"
+        android:title="@string/ambient_display_always_on_title"
+        android:summary="@string/ambient_display_always_on_summary"
+        android:persistent="false" />
+    <ListPreference
+        android:key="doze_brightness"
+        android:defaultValue="0"
+        android:title="@string/doze_brightness_title"
+        android:summary="@string/doze_brightness_summary"
+        android:entries="@array/doze_brightness_level"
+        android:entryValues="@array/doze_brightness_level_mode" />
+    <SwitchPreferenceCompat
+            android:key="wake_on_gesture"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_doze_wake"
+            android:title="@string/wake_on_gesture_title"
+            android:summary="@string/wake_on_gesture_summary" />
+    <SwitchPreferenceCompat
+            android:key="gesture_pick_up"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_doze_pickup"
+            android:title="@string/pick_up_gesture_title"
+            android:summary="@string/pick_up_gesture_summary" />
+            <SwitchPreferenceCompat
+            android:key="gesture_hand_wave"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_doze_hand"
+            android:title="@string/hand_wave_gesture_title"
+            android:summary="@string/hand_wave_gesture_summary" />
+
+    <SwitchPreferenceCompat
+            android:key="gesture_pocket"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_doze_pocket"
+            android:title="@string/pocket_gesture_title"
+            android:summary="@string/pocket_gesture_summary" />
+            
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Audio">
+        <Preference
+            android:key="clear_speaker"
+            android:title="@string/clear_speaker_title"
+            android:summary="@string/clear_speaker_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="System">
+        <Preference
+            android:key="thermal"
+            android:title="@string/thermal_title"
+            android:summary="@string/thermal_summary" />
+        <Preference
+            android:key="kernel_manager"
+            android:title="@string/kernel_manager_title"
+            android:summary="@string/kernel_manager_summary" />
+        <Preference
+            android:key="useless"
+            android:title="@string/useless_mode_title"
+            android:summary="@string/useless_mode_summary" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

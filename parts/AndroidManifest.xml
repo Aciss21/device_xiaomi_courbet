@@ -24,42 +24,51 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/device_settings_app_name"
         android:persistent="true"
-        android:theme="@style/Theme.SubSettingsBase.Expressive">
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true"
+        android:theme="@style/Theme.SubSettingsBase">
 
-        <receiver
-            android:name=".BootCompletedReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <receiver android:name=".BootCompletedReceiver"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
+                <activity
+            android:name=".nervstuff.NervStuffActivity"
+            android:label="@string/nerv_stuff_title"
+            android:launchMode="singleTask"
+            android:exported="false" />
+
+        <activity-alias
+            android:name=".Settings"
+            android:label="@string/device_settings_app_name"
+            android:taskAffinity="org.lineageos.settings.root"
+            android:exported="true"
+            android:targetActivity=".nervstuff.NervStuffActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+
         <activity
             android:name=".thermal.ThermalActivity"
-            android:label="@string/thermal_title"
-            android:exported="false"
-            android:theme="@style/Theme.SubSettingsBase.Expressive">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.battery" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/thermal_summary" />
-            <meta-data
-                android:name="com.android.settings.order"
-                android:value="2" />
-        </activity>
+            android:label="@string/thermal_title">
+            </activity>
 
         <service
             android:name=".thermal.ThermalService"
@@ -68,45 +77,57 @@
         </service>
 
         <activity
-            android:name=".refreshrate.RefreshActivity"
-            android:label="@string/refresh_title"
-            android:exported="false"
-            android:theme="@style/Theme.SubSettingsBase.Expressive">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.display" />
-            <meta-data
-                android:name="com.android.settings.summary"
-                android:resource="@string/refresh_summary" />
-        </activity>
+    	    android:name=".useless.UselessActivity"
+    	    android:label="@string/useless_mode_title"
+    	    android:exported="false" />
+
+	    <activity
+    	    android:name=".kernelmanager.KernelManagerActivity"
+    	    android:label="@string/kernel_manager_title"
+    	    android:exported="false" />
 
         <activity
-            android:name=".TileEntryActivity"
-            android:label="@string/device_settings_app_name"
-            android:exported="false"
-            android:theme="@style/Theme.SubSettingsBase.Expressive">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-            </intent-filter>
+            android:name=".speaker.ClearSpeakerActivity"
+            android:label="@string/clear_speaker_title">
+        </activity>
+        
+        <activity
+            android:name=".haptic.HapticLevelActivity"
+            android:label="@string/haptic_title">
+        </activity>
+        
+        <service android:name=".doze.DozeService"
+                 android:permission="XiaomiDozeService"
+                 android:exported="true">
+        </service>
+
+        <activity
+            android:name=".resolution.ResolutionActivity"
+            android:label="@string/upscale_title"
+            android:exported="false">
+            </activity>
+
+        <service
+            android:name=".resolution.ResolutionService"
+            android:exported="true"
+            android:permission="ResolutionService">
+        </service>
+
+        <activity
+            android:name=".resolution.SystemResolutionActivity"
+            android:label="@string/system_resolution_title"
+            android:exported="false">
         </activity>
 
         <service
-            android:name=".refreshrate.RefreshService"
+            android:name=".thermal.ThermalTileService"
+            android:icon="@drawable/ic_thermal"
+            android:label="@string/thermal_title"
             android:exported="true"
-            android:permission="RefreshService">
-        </service>
-
-        <service
-            android:name=".refreshrate.RefreshTileService"
-            android:label="@string/refresh_rate_tile_title"
-            android:exported="true"
-            android:icon="@drawable/ic_refresh_rate"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
 
