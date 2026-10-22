@@ -21,6 +21,9 @@ $(call inherit-product, hardware/qcom-caf/common/common.mk)
 # API level, the device has been commercially launched on
 PRODUCT_SHIPPING_API_LEVEL := 30
 
+# Dolby
+$(call inherit-product, vendor/sony/dolby/sonydolby.mk)
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -106,6 +109,13 @@ PRODUCT_COPY_FILES += \
 # Device-specific settings
 PRODUCT_PACKAGES += \
     XiaomiParts
+
+# LunarisDolby
+PRODUCT_SOONG_NAMESPACES += \
+    packages/apps/LunarisDolby
+
+PRODUCT_PACKAGES += \
+    LunarisDolby
 
 # Display
 PRODUCT_PACKAGES += \
