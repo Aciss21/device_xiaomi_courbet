@@ -26,11 +26,31 @@ from extract_utils.utils import (
 )
 
 namespace_imports = [
+    'device/xiaomi/courbet',
     'hardware/qcom-caf/sm8150',
+    'hardware/qcom-caf/wlan',
     'hardware/xiaomi',
+    'vendor/qcom/opensource/commonsys/display',
+    'vendor/qcom/opensource/commonsys-intf/display',
+    'vendor/qcom/opensource/dataservices',
     'vendor/qcom/opensource/display',
-    'vendor/xiaomi/sm6150-common',
 ]
+
+
+def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
+    return f'{lib}_{partition}' if partition == 'vendor' else None
+
+
+lib_fixups: lib_fixups_user_type = {
+    **lib_fixups,
+    (
+        'com.qualcomm.qti.dpm.api@1.0',
+        'libmmosal',
+        'vendor.qti.hardware.fm@1.0',
+        'vendor.qti.imsrtpservice@3.0',
+        'vendor.qti.hardware.wifidisplaysession@1.0',
+    ): lib_fixup_vendor_suffix,
+}
 
 
 def blob_fixup_graphic_buffer_size(
@@ -59,16 +79,12 @@ def blob_fixup_graphic_buffer_size(
                 f.write(b'\x00\xa6\x81\x52')  # AArch64 mov w0, #0xd30
 
 
-lib_fixups: lib_fixups_user_type = {
-    **lib_fixups,
-}
-
 blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/init.batterysecret.rc': blob_fixup()
         .regex_replace(' +seclabel u:r:batterysecret:s0\n', ''),
     'vendor/etc/init/init.mi_thermald.rc': blob_fixup()
         .regex_replace(' +seclabel u:r:mi_thermald:s0\n', ''),
-    ('vendor/lib/hw/audio.primary.sm6150.so', 'vendor/lib/libaudioroute_ext.so'): blob_fixup()
+    'vendor/lib/hw/audio.primary.sm6150.so': blob_fixup()
         .replace_needed('libaudioroute.so', 'libaudioroute-v34.so'),
     'vendor/lib64/camera/components/com.qti.node.watermark.so': blob_fixup()
         .add_needed('libpiex_shim.so'),
