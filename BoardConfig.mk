@@ -169,6 +169,10 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+
+# Soong config: qcom wifi hal
+$(call soong_config_set,wifi,qcom_wlan_hal,$(BOARD_WLAN_DEVICE))
+$(if $(BOARD_WLAN_DEVICE),$(call soong_config_set,wifi,libpasn_support,$(if $(wildcard external/wpa_supplicant_8/src/pasn/pasn_common.c),true,false)))
 QC_WIFI_HIDL_FEATURE_DUAL_AP := true
 WIFI_DRIVER_DEFAULT := qca_cld3
 WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
