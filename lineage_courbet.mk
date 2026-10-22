@@ -15,6 +15,9 @@ $(call inherit-product, device/xiaomi/courbet/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Blur
+TARGET_ENABLE_BLUR := true
+
 # Camera
 TARGET_USES_LEICA_HOLY45 := true
 
