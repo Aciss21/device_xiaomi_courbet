@@ -179,4 +179,4 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # MIUICamera
--include vendor/miuicamera-sweet/BoardConfig.mk
+-include vendor/miuicamera-courbet/BoardConfig.mk

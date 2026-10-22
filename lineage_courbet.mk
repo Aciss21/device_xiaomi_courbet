@@ -15,6 +15,9 @@ $(call inherit-product, device/xiaomi/courbet/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Camera
+TARGET_USES_LEICA_HOLY45 := true
+
 PRODUCT_NAME := lineage_courbet
 PRODUCT_DEVICE := courbet
 PRODUCT_BRAND := Xiaomi
