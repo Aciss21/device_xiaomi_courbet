@@ -180,4 +180,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 include vendor/xiaomi/courbet/BoardConfigVendor.mk
 
 # MIUICamera
--include vendor/miuicamera-sweet/BoardConfig.mk
+-include vendor/miuicamera-courbet/BoardConfig.mk
