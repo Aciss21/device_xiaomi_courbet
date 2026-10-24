@@ -438,6 +438,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vndservicemanager
 
+# LunarisDolby
+PRODUCT_SOONG_NAMESPACES += \
+    packages/apps/LunarisDolby
+
+PRODUCT_PACKAGES += \
+    LunarisDolby
+
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/courbet/courbet-vendor.mk)
 
